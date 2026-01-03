@@ -337,4 +337,4 @@ Contributions are welcome! Please open an issue to discuss changes you wish to m
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License.# MarketPulse

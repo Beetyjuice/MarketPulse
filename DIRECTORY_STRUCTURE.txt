@@ -1,0 +1,70 @@
+.
+├── 1kafka_config.py
+├── 2price_producer.py
+├── advanced_scraper.py
+├── alerts.py
+├── analysis.py
+├── api_server.py
+├── app.py
+├── cassandra_config.py
+├── cassandra-init.cql
+├── CHANGELOG.md
+├── compile.sh
+├── components
+│   ├── alerts.py
+│   └── charts.py
+├── CONTRIBUTING.md
+├── database.py
+├── demo.py
+├── DEPLOYMENT_GUIDE.md
+├── DIRECTORY_STRUCTURE.txt
+├── docker-compose.enhanced.yml
+├── enhanced_app.py
+├── enhanced_lstm.py
+├── ensemble_model.py
+├── figures
+├── GITHUB_UPLOAD_GUIDE.md
+├── grafana-dashboards
+├── grafana-datasources
+├── helpers.py
+├── __init__.py
+├── kafka_config.py
+├── LICENSE
+├── main.py
+├── mnt
+│   └── user-data
+├── morocco_market_scraper
+│   └── morocco_market_scraper
+├── morocco_market_scraper.zip
+├── morocco_stock_producer.py
+├── morocco_stocks_data.py
+├── news_producer.py
+├── news_scraper.py
+├── OLD_SCRAPER_README.md
+├── prediction_service.py
+├── presentation.nav
+├── presentation.pdf
+├── presentation.snm
+├── presentation.tex
+├── price_producer.py
+├── PROJECT_STRUCTURE.md
+├── prometheus.yml
+├── README_ENHANCED.md
+├── README.md
+├── report.lof
+├── report.lot
+├── report.pdf
+├── report.tex
+├── requirements.txt
+├── scheduler.py
+├── SCREENSHOT_GUIDE.md
+├── sections
+├── settings.py
+├── spark_config.py
+├── spark_processor.py
+├── stock_scraper.py
+├── SUBMISSION_CHECKLIST.md
+├── train_lstm.py
+└── train_sentiment.py
+
+10 directories, 58 files

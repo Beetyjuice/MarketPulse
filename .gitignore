@@ -1,0 +1,121 @@
+# MarketPulse .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Data & Models
+data/
+*.csv
+*.json
+*.parquet
+models/*.h5
+models/*.pkl
+models/*.pt
+models/*.pth
+logs/
+*.log
+
+# Kafka & Streaming
+kafka-logs/
+zookeeper/
+checkpoints/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# API Keys & Secrets
+.env
+.env.local
+*.key
+*_key
+api_key*
+credentials.json
+secrets.yaml
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.blg
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+
+# OS Files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Test files
+test/
+tests/
+htmls/
+
+# Project specific
+mnt/
+api_finnhub.io
+api_key_alphaVantage
+1kafka_config.py
+2price_producer.py
+morocco_market_scraper.zip

@@ -1,0 +1,385 @@
+version: '3.8'
+
+services:
+  # ============================================================================
+  # MESSAGE BROKER LAYER
+  # ============================================================================
+
+  # Zookeeper: Kafka coordination service
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: marketpulse-zookeeper
+    hostname: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_SYNC_LIMIT: 5
+    ports:
+      - "2181:2181"
+    networks:
+      - marketpulse-network
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+      - zookeeper-logs:/var/lib/zookeeper/log
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "2181"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Kafka: Distributed message broker
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: marketpulse-kafka
+    hostname: kafka
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_LOG_RETENTION_HOURS: 168  # 7 days
+      KAFKA_LOG_SEGMENT_BYTES: 1073741824  # 1GB
+      KAFKA_COMPRESSION_TYPE: 'lz4'
+    networks:
+      - marketpulse-network
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  # Kafka UI: Web interface for Kafka monitoring
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: marketpulse-kafka-ui
+    depends_on:
+      kafka:
+        condition: service_healthy
+    ports:
+      - "8082:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: marketpulse-cluster
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+      DYNAMIC_CONFIG_ENABLED: 'true'
+    networks:
+      - marketpulse-network
+    restart: unless-stopped
+
+  # ============================================================================
+  # STREAM PROCESSING LAYER
+  # ============================================================================
+
+  # Spark Master: Cluster manager
+  spark-master:
+    image: bitnami/spark:3.5.0
+    container_name: marketpulse-spark-master
+    hostname: spark-master
+    ports:
+      - "7077:7077"    # Spark Master port
+      - "8080:8080"    # Spark Master Web UI
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_MASTER_HOST=spark-master
+      - SPARK_MASTER_PORT=7077
+      - SPARK_MASTER_WEBUI_PORT=8080
+    networks:
+      - marketpulse-network
+    volumes:
+      - ./processors:/opt/spark-apps
+      - ./ml_models:/opt/ml_models
+      - spark-logs:/opt/spark/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # Spark Worker 1
+  spark-worker-1:
+    image: bitnami/spark:3.5.0
+    container_name: marketpulse-spark-worker-1
+    hostname: spark-worker-1
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081"
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=3G
+      - SPARK_WORKER_CORES=2
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_WORKER_WEBUI_PORT=8081
+    networks:
+      - marketpulse-network
+    volumes:
+      - ./processors:/opt/spark-apps
+      - ./ml_models:/opt/ml_models
+      - spark-worker-1-data:/opt/spark/work
+    restart: unless-stopped
+
+  # Spark Worker 2 (optional - scale as needed)
+  spark-worker-2:
+    image: bitnami/spark:3.5.0
+    container_name: marketpulse-spark-worker-2
+    hostname: spark-worker-2
+    depends_on:
+      - spark-master
+    ports:
+      - "8082:8082"
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=3G
+      - SPARK_WORKER_CORES=2
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_WORKER_WEBUI_PORT=8082
+    networks:
+      - marketpulse-network
+    volumes:
+      - ./processors:/opt/spark-apps
+      - ./ml_models:/opt/ml_models
+      - spark-worker-2-data:/opt/spark/work
+    restart: unless-stopped
+
+  # ============================================================================
+  # DATABASE LAYER
+  # ============================================================================
+
+  # Cassandra: Time-series database
+  cassandra:
+    image: cassandra:4.1
+    container_name: marketpulse-cassandra
+    hostname: cassandra
+    ports:
+      - "9042:9042"    # CQL native transport
+      - "7000:7000"    # Inter-node cluster communication
+    environment:
+      - CASSANDRA_CLUSTER_NAME=MarketPulseCluster
+      - CASSANDRA_DC=dc1
+      - CASSANDRA_RACK=rack1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_SEEDS=cassandra
+      - MAX_HEAP_SIZE=1G
+      - HEAP_NEWSIZE=200M
+      - CASSANDRA_NUM_TOKENS=256
+    networks:
+      - marketpulse-network
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+      - ./config/cassandra-init.cql:/docker-entrypoint-initdb.d/init.cql
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+    restart: unless-stopped
+
+  # Redis: Caching layer
+  redis:
+    image: redis:7-alpine
+    container_name: marketpulse-redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    networks:
+      - marketpulse-network
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ============================================================================
+  # APPLICATION LAYER
+  # ============================================================================
+
+  # Morocco Stock Producer
+  morocco-producer:
+    build:
+      context: .
+      dockerfile: Dockerfile.producer
+    container_name: marketpulse-morocco-producer
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - STOCK_TOPIC=morocco-stock-prices
+      - NEWS_TOPIC=morocco-financial-news
+      - SCRAPE_INTERVAL=300  # 5 minutes
+    networks:
+      - marketpulse-network
+    volumes:
+      - ./producers:/app/producers
+      - ./files:/app/files
+      - ./config:/app/config
+    restart: unless-stopped
+
+  # Spark Processor
+  spark-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile.processor
+    container_name: marketpulse-processor
+    depends_on:
+      - spark-master
+      - kafka
+      - cassandra
+    environment:
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - CASSANDRA_HOST=cassandra
+      - CASSANDRA_PORT=9042
+    networks:
+      - marketpulse-network
+    volumes:
+      - ./processors:/app/processors
+      - ./ml_models:/app/ml_models
+      - ./config:/app/config
+    restart: unless-stopped
+
+  # Streamlit Dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: marketpulse-dashboard
+    depends_on:
+      - cassandra
+      - redis
+    ports:
+      - "8501:8501"
+    environment:
+      - CASSANDRA_HOST=cassandra
+      - CASSANDRA_PORT=9042
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - marketpulse-network
+    volumes:
+      - ./dashboard:/app/dashboard
+      - ./ml_models:/app/ml_models
+    restart: unless-stopped
+
+  # ============================================================================
+  # MONITORING & LOGGING
+  # ============================================================================
+
+  # Prometheus: Metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: marketpulse-prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    networks:
+      - marketpulse-network
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    restart: unless-stopped
+
+  # Grafana: Metrics visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: marketpulse-grafana
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=grafana-clock-panel
+    networks:
+      - marketpulse-network
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./config/grafana-dashboards:/etc/grafana/provisioning/dashboards
+      - ./config/grafana-datasources:/etc/grafana/provisioning/datasources
+    restart: unless-stopped
+
+# ============================================================================
+# NETWORKS
+# ============================================================================
+
+networks:
+  marketpulse-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+
+# ============================================================================
+# VOLUMES
+# ============================================================================
+
+volumes:
+  # Zookeeper
+  zookeeper-data:
+    driver: local
+  zookeeper-logs:
+    driver: local
+
+  # Kafka
+  kafka-data:
+    driver: local
+
+  # Spark
+  spark-logs:
+    driver: local
+  spark-worker-1-data:
+    driver: local
+  spark-worker-2-data:
+    driver: local
+
+  # Cassandra
+  cassandra-data:
+    driver: local
+
+  # Redis
+  redis-data:
+    driver: local
+
+  # Monitoring
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local

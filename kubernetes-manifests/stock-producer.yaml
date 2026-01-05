@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-producer
+  namespace: marketpulse
+  labels:
+    app: stock-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-producer
+  template:
+    metadata:
+      labels:
+        app: stock-producer
+        tier: producer
+        role: producer
+    spec:
+      containers:
+      - name: stock-producer
+        image: gcr.io/PROJECT_ID/stock-producer:v1  # Update PROJECT_ID
+        envFrom:
+        - configMapRef:
+            name: marketpulse-config
+        - secretRef:
+            name: marketpulse-secrets
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits:
+            cpu: 1
+            memory: 2Gi
+        env:
+        - name: PRODUCER_TYPE
+          value: "stock"

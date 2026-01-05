@@ -1,0 +1,47 @@
+# Morocco Stock Market Scraper - Requirements
+# Core scraping libraries
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+html5lib>=1.1
+
+# RSS parsing
+feedparser>=6.0.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Database
+# SQLite is built-in to Python
+
+# Scheduling (optional)
+schedule>=1.2.0
+
+# For JavaScript-rendered pages (optional)
+selenium>=4.15.0
+webdriver-manager>=4.0.0
+
+# Async support (optional for future improvements)
+aiohttp>=3.9.0
+asyncio-throttle>=1.0.0
+
+# Date parsing
+python-dateutil>=2.8.0
+
+# CLI formatting
+rich>=13.0.0
+tabulate>=0.9.0
+
+# Environment variables (optional)
+python-dotenv>=1.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Logging
+colorlog>=6.7.0
+
+# HTTP retry logic
+urllib3>=2.0.0

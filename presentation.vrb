@@ -1,0 +1,22 @@
+\frametitle{Data Aggregation Strategy}
+\textbf{Priority-based Merge Algorithm:}
+
+    \begin{lstlisting}[language=Python]
+def aggregate_stock_data(quotes_with_sources):
+    # Priority: Casablanca > BMCE > BPNet
+    source_priority = {
+        'Casablanca': 3,
+        'BMCE': 2,
+        'BPNet': 1
+    }
+
+    # Group by ticker
+    for ticker, data_list in grouped_data.items():
+        # Sort by priority
+        data_list.sort(
+            key=lambda x: source_priority[x['source']],
+            reverse=True
+        )
+        # Use highest priority, fill missing from others
+        best = merge_data(data_list)
+    \end{lstlisting}

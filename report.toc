@@ -1,0 +1,82 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Context and Motivation}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Project Objectives}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Contributions}{7}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Report Structure}{7}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Related Work}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Big Data Systems for Finance}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Stock Price Prediction}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Sentiment Analysis in Finance}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Anomaly Detection}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3}System Architecture}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Overview}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Data Collection Layer}{11}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Message Broker Layer (Apache Kafka)}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Processing Layer (Apache Spark)}{12}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Price Processor}{13}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}News Processor}{13}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Multimodal Processor}{13}{subsubsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}Storage Layer (Apache Cassandra)}{13}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Application Layer}{14}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}ML Models}{14}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Dashboard}{14}{subsubsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.7}Deployment Architecture}{15}{subsection.3.7}%
+\contentsline {section}{\numberline {4}Implementation}{16}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Data Collection Implementation}{16}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Stock Scraper Architecture}{16}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}News Aggregation}{16}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Kafka Producer Implementation}{17}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Spark Streaming Implementation}{17}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Database Schema Implementation}{18}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Machine Learning Models}{20}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Model Architecture}{20}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Enhanced LSTM Models}{20}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Ensemble Model}{20}{subsubsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.2}Technical Indicators as Features}{21}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Training Methodology}{22}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Model Evaluation Metrics}{23}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Results and Performance Evaluation}{24}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Model Performance}{24}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Training Performance}{24}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Prediction Accuracy Over Time}{25}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}System Performance Benchmarks}{26}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Throughput and Latency}{26}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Resource Utilization}{27}{subsubsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.5}Scalability Analysis}{27}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Anomaly Detection Results}{27}{subsection.6.6}%
+\contentsline {section}{\numberline {7}Dashboard and Visualizations}{29}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Overview}{29}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Price Chart Tab}{29}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Technical Indicators Tab}{29}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}AI Predictions Tab}{30}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}News \& Sentiment Tab}{30}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Correlation Analysis Tab}{31}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Portfolio Management Tab}{31}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Dashboard Features Summary}{32}{subsection.7.8}%
+\contentsline {section}{\numberline {8}Discussion}{33}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Key Achievements}{33}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Challenges and Solutions}{33}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Data Collection Challenges}{33}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2}Real-time Processing}{33}{subsubsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.3}Model Overfitting}{33}{subsubsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.3}Limitations}{34}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Comparison with Existing Systems}{34}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Future Work}{34}{subsection.8.5}%
+\contentsline {subsubsection}{\numberline {8.5.1}Short-term Enhancements}{34}{subsubsection.8.5.1}%
+\contentsline {subsubsection}{\numberline {8.5.2}Long-term Research Directions}{34}{subsubsection.8.5.2}%
+\contentsline {subsubsection}{\numberline {8.5.3}Infrastructure Improvements}{35}{subsubsection.8.5.3}%
+\contentsline {section}{\numberline {9}Conclusion}{36}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Summary of Contributions}{36}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Impact and Applications}{36}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Lessons Learned}{36}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Final Remarks}{37}{subsection.9.4}%
+\contentsline {section}{\numberline {A}System Requirements}{39}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Hardware Requirements}{39}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Software Requirements}{39}{subsection.A.2}%
+\contentsline {section}{\numberline {B}Installation Guide}{39}{appendix.B}%
+\contentsline {section}{\numberline {C}Morocco Stock Market Data}{40}{appendix.C}%
+\contentsline {subsection}{\numberline {C.1}Comprehensive Stock List}{40}{subsection.C.1}%
+\contentsline {subsection}{\numberline {C.2}Data Sources}{40}{subsection.C.2}%
+\contentsline {subsection}{\numberline {C.3}AI Prediction Features}{41}{subsection.C.3}%
+\contentsline {section}{\numberline {D}Code Repository Structure}{42}{appendix.D}%

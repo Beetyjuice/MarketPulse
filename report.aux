@@ -1,0 +1,155 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\babel@aux{english}{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{6}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Context and Motivation}{6}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Project Objectives}{6}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Contributions}{7}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Report Structure}{7}{subsection.1.4}\protected@file@percent }
+\citation{marz2015big}
+\citation{kreps2014questioning}
+\citation{hochreiter1997long}
+\citation{cho2014learning}
+\citation{bahdanau2014neural}
+\citation{vaswani2017attention}
+\citation{fischer2018deep}
+\citation{araci2019finbert}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{8}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Big Data Systems for Finance}{8}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Stock Price Prediction}{8}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Sentiment Analysis in Finance}{8}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Anomaly Detection}{9}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}System Architecture}{10}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Overview}{10}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces MarketPulse System Architecture}}{11}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:architecture}{{1}{11}{MarketPulse System Architecture}{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Collection Layer}{11}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Message Broker Layer (Apache Kafka)}{12}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Processing Layer (Apache Spark)}{12}{subsection.3.4}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Price Anomaly Detection}}{13}{algorithm.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Price Processor}{13}{subsubsection.3.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}News Processor}{13}{subsubsection.3.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}Multimodal Processor}{13}{subsubsection.3.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Storage Layer (Apache Cassandra)}{13}{subsection.3.5}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Stock Prices Table Schema}}{13}{lstlisting.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Application Layer}{14}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.1}ML Models}{14}{subsubsection.3.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.2}Dashboard}{14}{subsubsection.3.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Deployment Architecture}{15}{subsection.3.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Docker Services Configuration}}{15}{table.caption.2}\protected@file@percent }
+\newlabel{tab:services}{{1}{15}{Docker Services Configuration}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{16}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data Collection Implementation}{16}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Stock Scraper Architecture}{16}{subsubsection.4.1.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Stock Scraper Core Classes}}{16}{lstlisting.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}News Aggregation}{16}{subsubsection.4.1.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces News Scraper Implementation}}{16}{lstlisting.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Kafka Producer Implementation}{17}{subsection.4.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Morocco Stock Producer}}{17}{lstlisting.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Spark Streaming Implementation}{17}{subsection.4.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}{\ignorespaces Spark Price Processor}}{17}{lstlisting.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Database Schema Implementation}{18}{subsection.4.4}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}{\ignorespaces Cassandra Keyspace Creation}}{18}{lstlisting.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Machine Learning Models}{20}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Model Architecture}{20}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Enhanced LSTM Models}{20}{subsubsection.5.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Ensemble Model}{20}{subsubsection.5.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Ensemble Model Architecture}}{21}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:ensemble}{{2}{21}{Ensemble Model Architecture}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Technical Indicators as Features}{21}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Training Methodology}{22}{subsection.5.3}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Data Preparation Pipeline}}{22}{algorithm.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Model Evaluation Metrics}{23}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results and Performance Evaluation}{24}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Model Performance}{24}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Model Performance Comparison}}{24}{table.caption.4}\protected@file@percent }
+\newlabel{tab:model_comparison}{{2}{24}{Model Performance Comparison}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Training Performance}{24}{subsection.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Training and Validation Loss Curves}}{25}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:training_curves}{{3}{25}{Training and Validation Loss Curves}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Prediction Accuracy Over Time}{25}{subsection.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Ensemble Model Predictions vs. Actual Prices}}{26}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:predictions}{{4}{26}{Ensemble Model Predictions vs. Actual Prices}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}System Performance Benchmarks}{26}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.1}Throughput and Latency}{26}{subsubsection.6.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces System Performance Benchmarks}}{26}{table.caption.7}\protected@file@percent }
+\newlabel{tab:performance}{{3}{26}{System Performance Benchmarks}{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.2}Resource Utilization}{27}{subsubsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Scalability Analysis}{27}{subsection.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces System Scalability (Workers vs. Throughput)}}{27}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:scalability}{{5}{27}{System Scalability (Workers vs. Throughput)}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Anomaly Detection Results}{27}{subsection.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Dashboard and Visualizations}{29}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Overview}{29}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Price Chart Tab}{29}{subsection.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Main Price Chart with Technical Indicators}}{29}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:dashboard_price}{{6}{29}{Main Price Chart with Technical Indicators}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Technical Indicators Tab}{29}{subsection.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Technical Indicators Analysis}}{30}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:dashboard_indicators}{{7}{30}{Technical Indicators Analysis}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}AI Predictions Tab}{30}{subsection.7.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces AI Model Predictions Comparison}}{30}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:dashboard_predictions}{{8}{30}{AI Model Predictions Comparison}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}News \& Sentiment Tab}{30}{subsection.7.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces News Sentiment Analysis Dashboard}}{31}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:dashboard_sentiment}{{9}{31}{News Sentiment Analysis Dashboard}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}Correlation Analysis Tab}{31}{subsection.7.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Stock Correlation and Sector Analysis}}{31}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:dashboard_correlation}{{10}{31}{Stock Correlation and Sector Analysis}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.7}Portfolio Management Tab}{31}{subsection.7.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Portfolio Management Interface}}{32}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:dashboard_portfolio}{{11}{32}{Portfolio Management Interface}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.8}Dashboard Features Summary}{32}{subsection.7.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{33}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Key Achievements}{33}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Challenges and Solutions}{33}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}Data Collection Challenges}{33}{subsubsection.8.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.2}Real-time Processing}{33}{subsubsection.8.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.3}Model Overfitting}{33}{subsubsection.8.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Limitations}{34}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Comparison with Existing Systems}{34}{subsection.8.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparison with Existing Financial Platforms}}{34}{table.caption.15}\protected@file@percent }
+\newlabel{tab:comparison}{{4}{34}{Comparison with Existing Financial Platforms}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}Future Work}{34}{subsection.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.5.1}Short-term Enhancements}{34}{subsubsection.8.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.5.2}Long-term Research Directions}{34}{subsubsection.8.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.5.3}Infrastructure Improvements}{35}{subsubsection.8.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{36}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Summary of Contributions}{36}{subsection.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Impact and Applications}{36}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Lessons Learned}{36}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Final Remarks}{37}{subsection.9.4}\protected@file@percent }
+\bibcite{marz2015big}{1}
+\bibcite{kreps2014questioning}{2}
+\bibcite{hochreiter1997long}{3}
+\bibcite{cho2014learning}{4}
+\bibcite{bahdanau2014neural}{5}
+\bibcite{vaswani2017attention}{6}
+\bibcite{fischer2018deep}{7}
+\bibcite{araci2019finbert}{8}
+\bibcite{white2016hadoop}{9}
+\bibcite{karau2015learning}{10}
+\bibcite{cassandra2010}{11}
+\bibcite{goodfellow2016deep}{12}
+\bibcite{chollet2018deep}{13}
+\@writefile{toc}{\contentsline {section}{\numberline {A}System Requirements}{39}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Hardware Requirements}{39}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Software Requirements}{39}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Installation Guide}{39}{appendix.B}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}{\ignorespaces Installation Commands}}{39}{lstlisting.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Morocco Stock Market Data}{40}{appendix.C}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Comprehensive Stock List}{40}{subsection.C.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Morocco Stock Exchange - Banking Sector}}{40}{table.caption.16}\protected@file@percent }
+\newlabel{tab:morocco_banking}{{5}{40}{Morocco Stock Exchange - Banking Sector}{table.caption.16}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Morocco Stock Exchange - Major Sectors (Sample)}}{40}{table.caption.17}\protected@file@percent }
+\newlabel{tab:morocco_sectors}{{6}{40}{Morocco Stock Exchange - Major Sectors (Sample)}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Data Sources}{40}{subsection.C.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}AI Prediction Features}{41}{subsection.C.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D}Code Repository Structure}{42}{appendix.D}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}{\ignorespaces Project Directory Structure}}{42}{lstlisting.8}\protected@file@percent }
+\gdef \@abspage@last{44}

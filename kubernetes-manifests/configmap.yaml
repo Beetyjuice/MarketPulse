@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: marketpulse-config
+  namespace: marketpulse
+data:
+  # Kafka Configuration
+  KAFKA_BROKER: "kafka:9092"
+  KAFKA_TOPIC_STOCKS: "stock-prices"
+  KAFKA_TOPIC_NEWS: "news-sentiment"
+
+  # Cassandra Configuration
+  CASSANDRA_HOST: "cassandra"
+  CASSANDRA_PORT: "9042"
+  CASSANDRA_KEYSPACE: "marketpulse"
+
+  # Redis Configuration
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+
+  # Spark Configuration
+  SPARK_MASTER: "local[*]"
+
+  # Application Configuration
+  LOG_LEVEL: "INFO"
+  ENVIRONMENT: "production"
+  TIMEZONE: "Africa/Casablanca"

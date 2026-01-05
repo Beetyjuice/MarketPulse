@@ -1,0 +1,41 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'marketpulse'
+    environment: 'production'
+
+# Alerting configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Kafka metrics (if kafka-jmx-exporter is configured)
+  - job_name: 'kafka'
+    static_configs:
+      - targets: ['kafka:9092']
+    metrics_path: /metrics
+
+  # Cassandra metrics (if cassandra-exporter is configured)
+  - job_name: 'cassandra'
+    static_configs:
+      - targets: ['cassandra:9042']
+
+  # Spark metrics
+  - job_name: 'spark-master'
+    static_configs:
+      - targets: ['spark-master:8080']
+    metrics_path: /metrics/json
+
+  # Dashboard metrics
+  - job_name: 'dashboard'
+    static_configs:
+      - targets: ['dashboard:8501']
